@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="referrer" content="strict-origin-when-cross-origin"/>
     <meta name="description"
           content="Engineering Manager at Toast. Building scalable systems, leading teams, and exploring AI applications."/>
     <meta name="author" content="Tushit Jain"/>
@@ -19,14 +20,18 @@
     <meta property="og:image:height" content="600"/>
     <meta property="og:image:alt" content="Tushit Jain"/>
     <meta name="twitter:card" content="summary"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="css/fontsCss.css" rel="stylesheet" type="text/css"/>
     <link href="css/fontCss.css" rel="stylesheet" type="text/css"/>
     <link href="css/styles.css" rel="stylesheet"/>
     <link href="css/custom.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
+          integrity="sha384-mTX5j/NIzlehkuOql3BYfNpkDrnvRHS5S7V3ctncUhJjtlL1+85q8lCKi8A5sUb+"
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 
 <body id="page-top">
+<a class="skip-link visually-hidden" href="#about">Skip to main content</a>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
     <a class="navbar-brand js-scroll-trigger" href="#page-top"
     ><span class="d-block d-lg-none">Tushit Jain</span><span class="d-none d-lg-block"><img
@@ -45,8 +50,8 @@
         </ul>
     </div>
 </nav>
-<div class="container-fluid p-0">
-    <section class="resume-section" id="about">
+<main class="container-fluid p-0">
+    <section class="resume-section" id="about" tabindex="-1">
         <div class="resume-section-content">
             <h1 class="mb-0">Tushit <span class="text-primary">Jain</span></h1>
             <div class="subheading mb-5">Los Angeles, California · <a
@@ -71,7 +76,7 @@
         </div>
     </section>
     <hr class="m-0"/>
-    <section class="resume-section" id="experience">
+    <section class="resume-section" id="experience" tabindex="-1">
         <div class="resume-section-content">
             <h2 class="mb-5">Experience</h2>
 
@@ -233,7 +238,7 @@
         </div>
     </section>
     <hr class="m-0"/>
-    <section class="resume-section" id="education">
+    <section class="resume-section" id="education" tabindex="-1">
         <div class="resume-section-content">
             <h2 class="mb-5">Education</h2>
             <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
@@ -263,30 +268,30 @@
         </div>
     </section>
     <hr class="m-0"/>
-    <section class="resume-section" id="skills">
+    <section class="resume-section" id="skills" tabindex="-1">
         <div class="resume-section-content">
             <h2 class="mb-5">Skills</h2>
             <div class="subheading mb-3">Programming Languages & Tools</div>
-            <ul class="list-inline dev-icons">
-                <li class="list-inline-item"><i class="devicon-java-plain-wordmark" title="Java"></i></li>
-                <li class="list-inline-item"><i class="devicon-spring-plain-wordmark" title="Spring"></i></li>
-                <li class="list-inline-item"><i class="devicon-angularjs-plain-wordmark" title="Angular"></i></li>
-                <li class="list-inline-item"><i class="devicon-vuejs-plain-wordmark" title="VueJs"></i></li>
-                <li class="list-inline-item"><i class="devicon-javascript-plain" title="Javascript"></i></li>
-                <li class="list-inline-item"><i class="devicon-react-original-wordmark" title="React"></i></li>
-                <li class="list-inline-item"><i class="devicon-postgresql-plain-wordmark" title="PostgreSql"></i></li>
-                <li class="list-inline-item"><i class="devicon-github-original-wordmark" title="Github"></i></li>
-                <li class="list-inline-item"><i class="devicon-docker-plain-wordmark" title="Docker"></i></li>
-                <li class="list-inline-item"><i class="devicon-apachekafka-original-wordmark" title="Apache Kafka"></i>
+            <ul class="list-inline dev-icons" role="list">
+                <li class="list-inline-item"><i class="devicon-java-plain-wordmark" role="img" aria-label="Java" title="Java"></i></li>
+                <li class="list-inline-item"><i class="devicon-spring-plain-wordmark" role="img" aria-label="Spring" title="Spring"></i></li>
+                <li class="list-inline-item"><i class="devicon-angularjs-plain-wordmark" role="img" aria-label="Angular" title="Angular"></i></li>
+                <li class="list-inline-item"><i class="devicon-vuejs-plain-wordmark" role="img" aria-label="VueJs" title="VueJs"></i></li>
+                <li class="list-inline-item"><i class="devicon-javascript-plain" role="img" aria-label="Javascript" title="Javascript"></i></li>
+                <li class="list-inline-item"><i class="devicon-react-original-wordmark" role="img" aria-label="React" title="React"></i></li>
+                <li class="list-inline-item"><i class="devicon-postgresql-plain-wordmark" role="img" aria-label="PostgreSql" title="PostgreSql"></i></li>
+                <li class="list-inline-item"><i class="devicon-github-original-wordmark" role="img" aria-label="Github" title="Github"></i></li>
+                <li class="list-inline-item"><i class="devicon-docker-plain-wordmark" role="img" aria-label="Docker" title="Docker"></i></li>
+                <li class="list-inline-item"><i class="devicon-apachekafka-original-wordmark" role="img" aria-label="Apache Kafka" title="Apache Kafka"></i>
                 </li>
-                <li class="list-inline-item"><i class="devicon-amazonwebservices-plain-wordmark" title="AWS"></i></li>
-                <li class="list-inline-item"><i class="devicon-npm-original-wordmark" title="NPM"></i></li>
-                <li class="list-inline-item"><i class="devicon-intellij-plain-wordmark" title="intelliJ"></i></li>
-                <li class="list-inline-item"><i class="devicon-jira-plain-wordmark" title="Jira"></i></li>
+                <li class="list-inline-item"><i class="devicon-amazonwebservices-plain-wordmark" role="img" aria-label="AWS" title="AWS"></i></li>
+                <li class="list-inline-item"><i class="devicon-npm-original-wordmark" role="img" aria-label="NPM" title="NPM"></i></li>
+                <li class="list-inline-item"><i class="devicon-intellij-plain-wordmark" role="img" aria-label="intelliJ" title="intelliJ"></i></li>
+                <li class="list-inline-item"><i class="devicon-jira-plain-wordmark" role="img" aria-label="Jira" title="Jira"></i></li>
 
             </ul>
             <div class="subheading mb-3">Workflow</div>
-            <ul class="fa-ul mb-0">
+            <ul class="fa-ul mb-0" role="list">
                 <li>
                     <span class="fa-li"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#check"/></svg></span>Mobile-First, Responsive Design
                 </li>
@@ -303,7 +308,7 @@
         </div>
     </section>
     <hr class="m-0"/>
-    <section class="resume-section" id="interests">
+    <section class="resume-section" id="interests" tabindex="-1">
         <div class="resume-section-content">
             <h2 class="mb-5">Interests</h2>
             <p>When I'm not managing engineering teams or deploying microservices, I'm usually tinkering with local AI
@@ -315,7 +320,7 @@
         </div>
     </section>
     <hr class="m-0"/>
-</div>
+</main>
 <script src="assets/js/scripts.js"></script>
 </body>
 

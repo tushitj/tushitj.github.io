@@ -47,3 +47,39 @@ section.resume-section {
     text-align: center;
     line-height: inherit;
 }
+
+/* Visually hidden until focused (skip link). */
+.visually-hidden:where(:not(:focus-within, :active)) {
+    position: absolute !important;
+    clip-path: inset(50%) !important;
+    overflow: hidden !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    white-space: nowrap !important;
+}
+
+.skip-link {
+    position: fixed;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 1040;
+    padding: 0.5rem 1rem;
+    background-color: #fff;
+    color: #212529;
+}
+
+/* Scrollspy: native :target-current where supported, .active set by scripts.js otherwise. */
+#sideNav .navbar-nav {
+    scroll-target-group: auto;
+}
+
+/* Underline the current section so it isn't indicated by color alone. */
+#sideNav .navbar-nav .nav-link:is(:target-current, .active) {
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3em;
+}
