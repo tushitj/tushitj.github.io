@@ -25,6 +25,27 @@
         setMenu(false);
     });
 
+    // Mirror the highlighted link in aria-current for assistive technologies.
+    function markCurrent(current) {
+        links.forEach(function (link) {
+            link.setAttribute("aria-current", link === current ? "true" : "false");
+        });
+    }
+
+    // Native scrollspy: CSS scroll-target-group + :target-current does the highlighting.
+    if (window.CSS && CSS.supports && CSS.supports("scroll-target-group: auto")) {
+        var syncAriaCurrent = function () {
+            markCurrent(document.querySelector("#sideNav .nav-link:target-current"));
+        };
+        // :target-current resolves after layout, so sync once the page has rendered.
+        window.addEventListener("load", function () {
+            requestAnimationFrame(syncAriaCurrent);
+        });
+        document.addEventListener("scrollend", syncAriaCurrent);
+        return;
+    }
+
+    // Fallback: IntersectionObserver toggles .active.
     if (!("IntersectionObserver" in window)) return;
 
     var byId = {};
@@ -35,11 +56,12 @@
     var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
             if (!entry.isIntersecting) return;
-            links.forEach(function (l) {
-                l.classList.remove("active");
-            });
             var active = byId[entry.target.id];
-            if (active) active.classList.add("active");
+            if (!active) return;
+            links.forEach(function (l) {
+                l.classList.toggle("active", l === active);
+            });
+            markCurrent(active);
         });
     }, {rootMargin: "-45% 0px -50% 0px"});
 
