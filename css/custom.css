@@ -1,0 +1,49 @@
+/* Site-specific additions on top of the Start Bootstrap Resume theme. */
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* Keep section headings clear of the fixed top navbar on small screens. */
+section.resume-section {
+    scroll-margin-top: 3.375rem;
+}
+
+@media (min-width: 992px) {
+    section.resume-section {
+        scroll-margin-top: 0;
+    }
+}
+
+/* Inline SVG icons (replace the Font Awesome JS bundle). */
+.icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+    overflow: visible;
+}
+
+.fa-ul {
+    list-style-type: none;
+    margin-left: 2.5em;
+    padding-left: 0;
+}
+
+.fa-ul > li {
+    position: relative;
+}
+
+.fa-li {
+    position: absolute;
+    left: -2em;
+    width: 2em;
+    text-align: center;
+    line-height: inherit;
+}
