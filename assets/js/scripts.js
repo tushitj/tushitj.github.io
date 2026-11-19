@@ -1,42 +1,50 @@
-/*!
-    * Start Bootstrap - Resume v6.0.0 (https://startbootstrap.com/template-overviews/resume)
-    * Copyright 2013-2020 Start Bootstrap
-    * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-resume/blob/master/LICENSE)
-    */
-    (function ($) {
-    "use strict"; // Start of use strict
+// Mobile menu toggle, auto-close on link click, and active-section highlighting.
+// Smooth scrolling is handled in CSS (scroll-behavior).
+(function () {
+    "use strict";
 
-    // Smooth scrolling using jQuery easing
-    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
-        if (
-            location.pathname.replace(/^\//, "") ==
-                this.pathname.replace(/^\//, "") &&
-            location.hostname == this.hostname
-        ) {
-            var target = $(this.hash);
-            target = target.length
-                ? target
-                : $("[name=" + this.hash.slice(1) + "]");
-            if (target.length) {
-                $("html, body").animate(
-                    {
-                        scrollTop: target.offset().top,
-                    },
-                    1000,
-                    "easeInOutExpo"
-                );
-                return false;
-            }
-        }
+    var toggler = document.querySelector("#sideNav .navbar-toggler");
+    var menu = document.getElementById("navbarSupportedContent");
+    var links = Array.prototype.slice.call(document.querySelectorAll("#sideNav .nav-link"));
+
+    function setMenu(open) {
+        menu.classList.toggle("show", open);
+        toggler.setAttribute("aria-expanded", String(open));
+    }
+
+    toggler.addEventListener("click", function () {
+        setMenu(!menu.classList.contains("show"));
     });
 
-    // Closes responsive menu when a scroll trigger link is clicked
-    $(".js-scroll-trigger").click(function () {
-        $(".navbar-collapse").collapse("hide");
+    links.forEach(function (link) {
+        link.addEventListener("click", function () {
+            setMenu(false);
+        });
+    });
+    document.querySelector("#sideNav .navbar-brand").addEventListener("click", function () {
+        setMenu(false);
     });
 
-    // Activate scrollspy to add active class to navbar items on scroll
-    $("body").scrollspy({
-        target: "#sideNav",
+    if (!("IntersectionObserver" in window)) return;
+
+    var byId = {};
+    links.forEach(function (link) {
+        byId[link.getAttribute("href").slice(1)] = link;
     });
-})(jQuery); // End of use strict
+
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            links.forEach(function (l) {
+                l.classList.remove("active");
+            });
+            var active = byId[entry.target.id];
+            if (active) active.classList.add("active");
+        });
+    }, {rootMargin: "-45% 0px -50% 0px"});
+
+    Object.keys(byId).forEach(function (id) {
+        var section = document.getElementById(id);
+        if (section) observer.observe(section);
+    });
+})();
