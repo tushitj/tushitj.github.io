@@ -48,11 +48,17 @@ const lab = [
 
 <Base ogType="profile">
   <section class="hero" aria-labelledby="hero-name">
-    <h1 id="hero-name">Tushit Jain</h1>
-    <p class="intro">
-      <strong>Engineering manager at Toast.</strong> I lead the eight-person team behind digital signage and
-      drive-thru, and I still build: platforms at work, a home lab at home.
-    </p>
+    <div class="hero-main">
+      <h1 id="hero-name">Tushit Jain</h1>
+      <p class="intro">
+        <strong>Engineering manager at Toast.</strong> I lead the eight-person team behind digital signage and
+        drive-thru, and I still build: platforms at work, a home lab at home.
+      </p>
+      <div class="actions">
+        <a class="button" href="/resume/">View resume</a>
+        <a href="mailto:tushitjain@gmail.com">Email me</a>
+      </div>
+    </div>
     <ul class="stats">
       {
         stats.map((s) => (
@@ -63,10 +69,6 @@ const lab = [
         ))
       }
     </ul>
-    <div class="actions">
-      <a class="button" href="/resume/">View resume</a>
-      <a href="mailto:tushitjain@gmail.com">Email me</a>
-    </div>
   </section>
 
   <section id="work" class="section" aria-labelledby="work-h">

@@ -1,5 +1,5 @@
-/* Calm version of design V: one reading column, two typefaces,
-   whitespace instead of rules, one orange accent used sparingly. */
+/* Calm version of design V: a wide frame with side-by-side blocks, text
+   capped at a readable measure, two typefaces, one orange accent. */
 
 :root {
   color-scheme: light;
@@ -16,7 +16,8 @@
   --font-ui: "Archivo Variable", "Helvetica Neue", Arial, system-ui, sans-serif;
   --font-body: "Newsreader Variable", Georgia, "Times New Roman", serif;
 
-  --column: 44rem;
+  --column: 72rem;  /* page frame */
+  --measure: 40rem; /* max width for running text */
   --gutter: 1.25rem;
   --section-gap: clamp(3.5rem, 2.5rem + 4vw, 6rem);
 }
@@ -243,9 +244,32 @@ main:focus {
 /* ---------- Hero ---------- */
 
 .hero {
+  display: grid;
+  gap: 2rem 4rem;
+  align-items: end;
+}
+
+.hero-main {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
+
+@media (min-width: 60rem) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) 18rem;
+  }
+
+  .hero .stats {
+    grid-template-columns: 1fr;
+    gap: 0;
+    border-block-start: 1px solid var(--line);
+  }
+
+  .hero .stats li {
+    padding-block: 1rem;
+    border-block-end: 1px solid var(--line);
+  }
 }
 
 .hero h1 {
@@ -261,7 +285,7 @@ main:focus {
   font-size: 1.375rem;
   line-height: 1.5;
   color: var(--ink-2);
-  max-inline-size: 36rem;
+  max-inline-size: var(--measure);
 }
 
 .hero .intro strong {
@@ -275,7 +299,7 @@ main:focus {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(6rem, 100%), 1fr));
   gap: 1rem;
-  margin: 0.5rem 0;
+  margin: 0;
 }
 
 .stats li {
@@ -331,9 +355,9 @@ main:focus {
   margin: 0;
   padding: 0;
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+  gap: 1.5rem 2.5rem;
 }
 
 .principles strong {
@@ -353,9 +377,13 @@ main:focus {
   margin: 0;
   padding: 0;
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
+  gap: 1rem;
+}
+
+.cards > li {
+  display: grid;
 }
 
 .card {
@@ -428,6 +456,7 @@ main:focus {
 /* ---------- Notes list ---------- */
 
 .note-list {
+  max-inline-size: var(--measure);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -461,6 +490,7 @@ main:focus {
 }
 
 .empty {
+  max-inline-size: var(--measure);
   margin: 0;
   color: var(--ink-2);
 }
@@ -495,6 +525,7 @@ main:focus {
 }
 
 .article-head {
+  max-inline-size: 48rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -512,6 +543,10 @@ main:focus {
   font-size: 1rem;
   text-decoration: none;
   color: var(--ink-2);
+}
+
+.prose {
+  max-inline-size: var(--measure);
 }
 
 .prose > :first-child {
@@ -576,6 +611,24 @@ main:focus {
   flex-direction: column;
   gap: 0.25rem;
   scroll-margin-block-start: 1.5rem;
+}
+
+@media (min-width: 60rem) {
+  .role {
+    display: grid;
+    grid-template-columns: 12rem minmax(0, var(--measure));
+    column-gap: 3rem;
+  }
+
+  .role > * {
+    grid-column: 2;
+  }
+
+  .role > .note-meta {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    padding-block-start: 0.2rem;
+  }
 }
 
 .role h3 {
