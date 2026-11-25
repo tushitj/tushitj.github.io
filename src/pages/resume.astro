@@ -3,6 +3,7 @@ import Base from "../layouts/Base.astro";
 
 const roles = [
   {
+    id: "toast-em",
     title: "Engineering Manager",
     org: "Toast, Inc.",
     when: "Jan 2024 – Present",
@@ -16,6 +17,7 @@ const roles = [
     ],
   },
   {
+    id: "toast-tlm",
     title: "Staff Software Engineer, Tech Lead Manager",
     org: "Toast, Inc.",
     when: "Apr 2023 – Dec 2023",
@@ -28,6 +30,7 @@ const roles = [
     ],
   },
   {
+    id: "providertrust",
     title: "Software Developer",
     org: "ProviderTrust, Inc.",
     when: "Oct 2021 – Apr 2023",
@@ -79,56 +82,51 @@ const education = [
 ---
 
 <Base title="Resume" description="Experience and education of Tushit Jain, engineering manager at Toast.">
-  <div class="resume">
-    <header class="article-head">
-      <h1 class="display">Resume</h1>
-      <p class="lede">Engineering manager, Los Angeles. Java and Spring Boot at heart.</p>
-      <p class="mono print-hide">Use your browser’s Print → Save as PDF for a copy.</p>
-    </header>
+  <header class="article-head">
+    <h1>Resume</h1>
+    <p class="empty">Engineering manager in Los Angeles. Java and Spring Boot at heart.</p>
+    <p class="note-meta print-hide">To save a PDF, print this page and choose “Save as PDF”.</p>
+  </header>
 
-    <section class="split" aria-labelledby="exp-h">
-      <h2 id="exp-h" class="section-title">Experience</h2>
-      <div class="split-body" style="display: flex; flex-direction: column; gap: 2rem">
-        {
-          roles.map((role) => (
-            <article class="role">
-              <p class="when">{role.when}</p>
-              <div class="detail">
-                <h3>{role.title}</h3>
-                <p class="org">{role.org}</p>
-                <ul>
-                  {role.points.map((point) => (
-                    <li>{point}</li>
-                  ))}
-                </ul>
-              </div>
-            </article>
-          ))
-        }
-      </div>
-    </section>
+  <section class="section" aria-labelledby="exp-h">
+    <h2 id="exp-h">Experience</h2>
+    <div class="roles">
+      {
+        roles.map((role) => (
+          <article class="role" id={role.id}>
+            <p class="note-meta">{role.when}</p>
+            <h3>{role.title}</h3>
+            <p class="org">{role.org}</p>
+            <ul>
+              {role.points.map((point) => (
+                <li>{point}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </section>
 
-    <section class="split" aria-labelledby="edu-h">
-      <h2 id="edu-h" class="section-title">Education</h2>
-      <ul class="principles split-body">
-        {
-          education.map((item) => (
-            <li>
-              <span>
-                <strong>{item.degree}</strong> — {item.school}
-              </span>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
+  <section class="section" aria-labelledby="edu-h">
+    <h2 id="edu-h">Education</h2>
+    <ul class="principles">
+      {
+        education.map((item) => (
+          <li>
+            <strong>{item.degree}</strong>
+            <span>{item.school}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 
-    <section class="split" aria-labelledby="skills-h">
-      <h2 id="skills-h" class="section-title">Skills</h2>
-      <p class="split-body" style="margin: 0">
-        Java, Spring Boot, Spring Cloud, Kafka, PostgreSQL, AWS, Docker, React, Angular, Vue. Agile delivery,
-        cross-functional leadership, hiring and mentoring.
-      </p>
-    </section>
-  </div>
+  <section class="section" aria-labelledby="skills-h">
+    <h2 id="skills-h">Skills</h2>
+    <p class="empty">
+      Java, Spring Boot, Spring Cloud, Kafka, PostgreSQL, AWS, Docker, React, Angular, Vue. Agile delivery,
+      cross-functional leadership, hiring and mentoring.
+    </p>
+  </section>
 </Base>

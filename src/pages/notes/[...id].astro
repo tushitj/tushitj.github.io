@@ -17,7 +17,7 @@ const { title, description, date, tag, cover, coverAlt } = note.data;
 <Base title={title} description={description} ogType="article">
   <article class="article">
     <header class="article-head">
-      <a class="back-link mono" href="/notes/">← All notes</a>
+      <a class="back-link" href="/notes/">← All notes</a>
       <h1>{title}</h1>
       <p class="note-meta">
         <time datetime={date.toISOString().slice(0, 10)}>{formatMonth(date)}</time> · {tag}
@@ -25,7 +25,7 @@ const { title, description, date, tag, cover, coverAlt } = note.data;
     </header>
     {
       cover && (
-        <Image src={cover} alt={coverAlt ?? ""} widths={[640, 960, 1280, 1920]} sizes="(min-width: 78rem) 75rem, 100vw" layout="full-width" loading="eager" fetchpriority="high" />
+        <Image src={cover} alt={coverAlt ?? ""} widths={[480, 704, 1056, 1408]} sizes="(min-width: 47rem) 44rem, 100vw" layout="full-width" loading="eager" fetchpriority="high" />
       )
     }
     <div class="prose">

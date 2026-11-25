@@ -2,8 +2,6 @@
 import "@fontsource-variable/archivo/wdth.css";
 import "@fontsource-variable/newsreader/opsz.css";
 import "@fontsource-variable/newsreader/opsz-italic.css";
-import "@fontsource/ibm-plex-mono/400.css";
-import "@fontsource/ibm-plex-mono/500.css";
 import "../styles/global.css";
 
 interface Props {
@@ -25,10 +23,9 @@ const ogImage = new URL("/assets/img/og-profile.jpg", Astro.site);
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 
 const nav = [
-  { href: "/#how", label: "How I work" },
   { href: "/#work", label: "Work" },
   { href: "/notes/", label: "Notes", current: path.startsWith("/notes") },
-  { href: "/#lab", label: "Lab" },
+  { href: "/resume/", label: "Resume", current: path === "/resume" },
 ];
 ---
 
@@ -56,8 +53,8 @@ const nav = [
   <body>
     <a class="skip-link visually-hidden" href="#main">Skip to main content</a>
     <div class="page">
-      <header class="site-header mono">
-        <a href="/" aria-current={path === "/" ? "page" : undefined}>{SITE_NAME}</a>
+      <header class="site-header">
+        <a class="brand" href="/" aria-current={path === "/" ? "page" : undefined}>{SITE_NAME}</a>
         <nav aria-label="Primary">
           <ul>
             {
@@ -71,33 +68,20 @@ const nav = [
             }
           </ul>
         </nav>
-        <a class="resume-link" href="/resume/" aria-current={path === "/resume" ? "page" : undefined}>Resume →</a>
       </header>
 
       <main id="main" tabindex="-1">
         <slot />
       </main>
 
-      <footer class="site-footer mono">
+      <footer class="site-footer">
         <ul>
           <li><a href="mailto:tushitjain@gmail.com">Email</a></li>
           <li><a href="https://www.linkedin.com/in/jaintushit/" rel="me">LinkedIn</a></li>
           <li><a href="https://github.com/tushitj" rel="me">GitHub</a></li>
         </ul>
-        <span class="muted">Los Angeles · {new Date().getFullYear()}</span>
+        <span>Los Angeles · {new Date().getFullYear()}</span>
       </footer>
     </div>
   </body>
 </html>
-
-<style>
-  main {
-    display: flex;
-    flex-direction: column;
-    gap: 4.5rem;
-  }
-
-  main:focus {
-    outline: none;
-  }
-</style>
