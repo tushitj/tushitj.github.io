@@ -1,9 +1,12 @@
 # tushitj.github.io
 
-Personal resume site, served by GitHub Pages from `main`. Static HTML/CSS/JS, no build step.
+Personal site built with Astro and deployed to GitHub Pages by `.github/workflows/deploy.yml` on every push to `main`. Pages source must be set to "GitHub Actions".
 
-- Content lives in `index.html`; site-specific styles in `css/custom.css` (theme in `css/styles.css`).
-- Icons are an SVG sprite at `assets/img/icons.svg`, referenced with `<use>`.
+- `npm run dev` for local preview (drafts visible), `npm run build` to build `dist/`.
+- Pages: `src/pages/` (home, `resume`, `notes/`). Layout: `src/layouts/Base.astro`. Styles: `src/styles/global.css` (design V "Synthesis": color tokens on `:root`).
+- Notes: `src/content/notes/<slug>/index.md`, with photos in the same folder, referenced as `./photo.jpg`. Front matter schema is in `src/content.config.ts`; `draft: true` keeps a note out of production.
+- Fonts are self-hosted via Fontsource packages imported in `Base.astro`.
+- Static files served as-is (favicon, OG image) live in `public/`.
 
 ## Workflow
 

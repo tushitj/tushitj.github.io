@@ -1,0 +1,130 @@
+---
+import Base from "../layouts/Base.astro";
+import NoteList from "../components/NoteList.astro";
+import { getNotes } from "../lib/notes";
+
+const notes = (await getNotes()).slice(0, 3);
+
+const stats = [
+  { value: "2 → 8", label: "engineers on the team I built" },
+  { value: "−50%", label: "latency after the signage re-architecture" },
+  { value: "−70%", label: "deploy time with modern tooling" },
+];
+
+// TODO(Tushit): replace these drafts with your own principles, in your words.
+const principles = [
+  { lead: "I default to writing.", rest: "Context and trade-offs go in a doc before they go in a meeting." },
+  { lead: "Your 1:1, your agenda.", rest: "I bring the context you're missing and the feedback you need early." },
+  { lead: "I still read code.", rest: "Not to gate it, but to stay honest about what's hard." },
+];
+
+// Each card links to the matching entry on the resume until case studies exist.
+const work = [
+  {
+    href: "/resume/#toast-em",
+    title: "Scaling the signage team from 2 to 8",
+    summary: "Hiring, mentoring and promotions while launching an Android media player for digital signage.",
+    meta: "Toast · 2024–present",
+  },
+  {
+    href: "/resume/#toast-tlm",
+    title: "Re-architecting signage after an acquisition",
+    summary: "Rebuilt the acquired platform: latency down 50%, deploy time down 70%.",
+    meta: "Toast · 2023",
+  },
+  {
+    href: "/resume/#providertrust",
+    title: "Audit logging for SOC 2 and HITRUST",
+    summary: "A shared audit service every ProviderTrust product plugged into.",
+    meta: "ProviderTrust · 2021–23",
+  },
+];
+
+const lab = [
+  { title: "Home lab", body: "Proxmox nodes, self-hosted services, and what runs where." },
+  { title: "Local voice AI", body: "Speech in, local model, speech out. Nothing leaves the house." },
+];
+---
+
+<Base ogType="profile">
+  <section class="hero" aria-labelledby="hero-name">
+    <h1 id="hero-name">Tushit Jain</h1>
+    <p class="intro">
+      <strong>Engineering manager at Toast.</strong> I lead the eight-person team behind digital signage and
+      drive-thru, and I still build: platforms at work, a home lab at home.
+    </p>
+    <ul class="stats">
+      {
+        stats.map((s) => (
+          <li>
+            <strong>{s.value}</strong>
+            <span>{s.label}</span>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="actions">
+      <a class="button" href="/resume/">View resume</a>
+      <a href="mailto:tushitjain@gmail.com">Email me</a>
+    </div>
+  </section>
+
+  <section id="work" class="section" aria-labelledby="work-h">
+    <h2 id="work-h">Selected work</h2>
+    <ul class="cards">
+      {
+        work.map((item) => (
+          <li>
+            <article class="card">
+              <header>
+                <p class="meta">{item.meta}</p>
+                <h3>
+                  <a class="card-link" href={item.href}>
+                    {item.title}
+                  </a>
+                </h3>
+              </header>
+              <p>{item.summary}</p>
+            </article>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section id="how" class="section" aria-labelledby="how-h">
+    <h2 id="how-h">How I work</h2>
+    <ul class="principles">
+      {
+        principles.map((p) => (
+          <li>
+            <strong>{p.lead}</strong>
+            <span>{p.rest}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section id="notes" class="section" aria-labelledby="notes-h">
+    <div class="section-head">
+      <h2 id="notes-h">Notes</h2>
+      {notes.length > 0 && <a href="/notes/">All notes</a>}
+    </div>
+    <NoteList notes={notes} />
+  </section>
+
+  <section id="lab" class="section" aria-labelledby="lab-h">
+    <h2 id="lab-h">Lab</h2>
+    <ul class="lab">
+      {
+        lab.map((item) => (
+          <li>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Base>

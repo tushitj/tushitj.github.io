@@ -1,0 +1,17 @@
+---
+import Base from "../../layouts/Base.astro";
+import NoteList from "../../components/NoteList.astro";
+import { getNotes } from "../../lib/notes";
+
+const notes = await getNotes();
+---
+
+<Base title="Notes" description="Short notes on engineering management, building teams, and the home lab.">
+  <section class="section" aria-labelledby="notes-h">
+    <header class="article-head">
+      <h1 id="notes-h">Notes</h1>
+      <p class="empty">Short write-ups on leading teams, building systems, and the home lab.</p>
+    </header>
+    <NoteList notes={notes} />
+  </section>
+</Base>

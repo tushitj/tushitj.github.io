@@ -1,0 +1,132 @@
+---
+import Base from "../layouts/Base.astro";
+
+const roles = [
+  {
+    id: "toast-em",
+    title: "Engineering Manager",
+    org: "Toast, Inc.",
+    when: "Jan 2024 – Present",
+    points: [
+      "Scaled the team from 2 to 8 engineers, mentored and promoted talent, and nurtured a culture of innovation and excellence.",
+      "Architected and led the migration of legacy systems while driving the development of new products and services.",
+      "Led cross-functional collaboration with UX, security, and infra teams, improving cross-team synergy and product quality.",
+      "Enhanced customer satisfaction by 45%, focusing on uptime, stability, and system performance improvements.",
+      "Partnered with product managers and stakeholders to align technical efforts with business goals, kicking off an Android-based media player for digital signage.",
+      "Directed technical strategy for the Order Confirmation Screen, Digital Signage Boards, Inventory, and Pricing integration for menu and drive-thru timer system, increasing adoption by 60%.",
+    ],
+  },
+  {
+    id: "toast-tlm",
+    title: "Staff Software Engineer, Tech Lead Manager",
+    org: "Toast, Inc.",
+    when: "Apr 2023 – Dec 2023",
+    points: [
+      "Led Toast’s Digital Signage team post-acquisition, overseeing the migration, development, and launch of key initiatives.",
+      "Spearheaded scalable, low-latency microservices, reducing latency by 50% and re-architecting critical services for an 80% improvement in system performance and customer retention.",
+      "Directed the migration to modern engineering tools, improving code quality and reducing deployment time by 70%.",
+      "Mentored engineers, implementing best practices in testing, code reviews, and CI.",
+      "Drove adoption of agile practices, optimizing sprint cycles and resource allocation to land the roadmap on time.",
+    ],
+  },
+  {
+    id: "providertrust",
+    title: "Software Developer",
+    org: "ProviderTrust, Inc.",
+    when: "Oct 2021 – Apr 2023",
+    points: [
+      "Designed and developed a population API that builds organizational trees and manages healthcare subjects and entities across all ProviderTrust products.",
+      "Helped make applications SOC 2 and HITRUST compliant by building an audit logging service that records all events.",
+      "Worked on a multi-microservice monitoring dashboard that collects internal and external data and alerts on discrepancies.",
+      "Developed microservices with Spring Boot and Spring Cloud on AWS; optimized queries with the DBA team.",
+      "Enhanced programmatic Auth0 configuration for onboarding SSO clients across environments.",
+    ],
+  },
+  {
+    title: "Software Developer",
+    org: "Sony Pictures Entertainment",
+    when: "Jan 2021 – Oct 2021",
+    points: [
+      "Global Distribution Service team, maintaining a movie license management system.",
+      "Developed Spring Boot and Spring Cloud microservices with an Angular UI for a sales-to-finance application.",
+      "Built unit, integration, and RESTful contract test suites; led a proof of concept migrating services from Java 8 to 11.",
+    ],
+  },
+  {
+    title: "Java Developer",
+    org: "Dynamic Healthcare Systems",
+    when: "Jun 2018 – Dec 2020",
+    points: [
+      "Led the design and development of a microservice to calculate and reconcile internal and external amounts.",
+      "Maintained and refactored a JSP, Spring MVC, and Spring Data codebase; migrated the JSP frontend to Angular.",
+      "Used RabbitMQ for load distribution between the monolith and microservices; extended Jenkins CI/CD pipelines.",
+      "Migrated services from Java 8 to Java 9 and 11; built a Micronaut proof of concept for reactive workloads.",
+    ],
+  },
+  {
+    title: "Software Developer Intern",
+    org: "Brain Mentors Pvt. Ltd.",
+    when: "Aug 2015 – Jul 2016",
+    points: [
+      "Built a learning management web application, moving paper exams online and improving productivity by 40%.",
+      "Served more than 10,000 concurrent users; cut server load by 90% using browser storage.",
+    ],
+  },
+];
+
+const education = [
+  { school: "Ottawa University", degree: "MBA, Information Technology" },
+  { school: "State University of New York", degree: "M.S., Computer Science" },
+  { school: "Indraprastha University", degree: "B.Tech., Computer Science" },
+];
+---
+
+<Base title="Resume" description="Experience and education of Tushit Jain, engineering manager at Toast.">
+  <header class="article-head">
+    <h1>Resume</h1>
+    <p class="empty">Engineering manager in Los Angeles. Java and Spring Boot at heart.</p>
+    <p class="note-meta print-hide">To save a PDF, print this page and choose “Save as PDF”.</p>
+  </header>
+
+  <section class="section" aria-labelledby="exp-h">
+    <h2 id="exp-h">Experience</h2>
+    <div class="roles">
+      {
+        roles.map((role) => (
+          <article class="role" id={role.id}>
+            <p class="note-meta">{role.when}</p>
+            <h3>{role.title}</h3>
+            <p class="org">{role.org}</p>
+            <ul>
+              {role.points.map((point) => (
+                <li>{point}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="edu-h">
+    <h2 id="edu-h">Education</h2>
+    <ul class="principles">
+      {
+        education.map((item) => (
+          <li>
+            <strong>{item.degree}</strong>
+            <span>{item.school}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="section" aria-labelledby="skills-h">
+    <h2 id="skills-h">Skills</h2>
+    <p class="empty">
+      Java, Spring Boot, Spring Cloud, Kafka, PostgreSQL, AWS, Docker, React, Angular, Vue. Agile delivery,
+      cross-functional leadership, hiring and mentoring.
+    </p>
+  </section>
+</Base>
