@@ -1,6 +1,0 @@
-# GitHub Pages (Jekyll) settings.
-# Dot-folders (.agents/, .claude/) are never published; exclude the other
-# repo-only files so they aren't served on the live site.
-exclude:
-  - CLAUDE.md
-  - skills-lock.json

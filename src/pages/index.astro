@@ -1,0 +1,113 @@
+---
+import Base from "../layouts/Base.astro";
+import NoteList from "../components/NoteList.astro";
+import { getNotes } from "../lib/notes";
+
+const notes = (await getNotes()).slice(0, 3);
+
+// TODO(Tushit): replace these drafts with your own principles, in your words.
+const principles = [
+  "I default to writing. Context and trade-offs go in a doc before they go in a meeting.",
+  "Your 1:1, your agenda. I bring the context you're missing and the feedback you need early.",
+  "I still read code — not to gate it, but to stay honest about what's hard.",
+];
+
+const work = [
+  {
+    code: "W-03",
+    title: "Scaling the signage team from 2 to 8",
+    summary: "Hiring, mentoring and promotions while launching an Android media player for digital signage.",
+    where: "Toast · 2024–",
+  },
+  {
+    code: "W-02",
+    title: "Post-acquisition re-architecture",
+    summary: "Rebuilt the acquired signage platform: latency −50%, deploy time −70%.",
+    where: "Toast · 2023",
+  },
+  {
+    code: "W-01",
+    title: "Audit logging for SOC 2 & HITRUST",
+    summary: "A shared audit service every ProviderTrust product plugged into.",
+    where: "ProviderTrust · 2021–23",
+  },
+];
+
+const lab = [
+  { title: "Home lab", body: "Proxmox nodes, self-hosted services, and what runs where." },
+  { title: "Local voice AI", body: "Speech in, local model, speech out. Nothing leaves the house." },
+];
+---
+
+<Base ogType="profile">
+  <section class="hero" aria-labelledby="hero-name">
+    <div class="hero-text">
+      <h1 id="hero-name" class="display">Tushit<br />Jain</h1>
+      <p class="lede">Engineering manager who still builds — teams, platforms, and a home lab.</p>
+    </div>
+    <dl class="spec">
+      <dt>Role</dt>
+      <dd>Engineering Manager, Toast</dd>
+      <dt>Team</dt>
+      <dd>Digital signage &amp; drive-thru, 8 engineers</dd>
+      <dt>Stack</dt>
+      <dd>Java, Spring, AWS, Kafka, Postgres</dd>
+      <dt>Based</dt>
+      <dd>Los Angeles, CA</dd>
+    </dl>
+  </section>
+
+  <section id="how" class="split" aria-labelledby="how-h">
+    <h2 id="how-h" class="section-title"><span class="num">01</span>How I work</h2>
+    <ol class="principles split-body">
+      {
+        principles.map((text, i) => (
+          <li>
+            <span class="idx" aria-hidden="true">1.{i + 1}</span>
+            <span>{text}</span>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section id="work" class="work" aria-labelledby="work-h">
+    <h2 id="work-h" class="section-title"><span class="num">02</span>Selected work</h2>
+    <ul class="work-list">
+      {
+        work.map((item) => (
+          <li>
+            <span class="code" aria-hidden="true">{item.code}</span>
+            <div class="what">
+              <h3>{item.title}</h3>
+              <p>{item.summary}</p>
+            </div>
+            <span class="where">{item.where}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section id="notes" class="split" aria-labelledby="notes-h">
+    <h2 id="notes-h" class="section-title"><span class="num">03</span>Notes</h2>
+    <div class="split-body">
+      <NoteList notes={notes} />
+    </div>
+  </section>
+
+  <section id="lab" class="split" aria-labelledby="lab-h">
+    <h2 id="lab-h" class="section-title"><span class="num">04</span>Lab</h2>
+    <div class="lab-grid split-body">
+      {
+        lab.map((item, i) => (
+          <figure>
+            <figcaption>FIG. {i + 1}</figcaption>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </figure>
+        ))
+      }
+    </div>
+  </section>
+</Base>
